@@ -9,6 +9,8 @@ export const store = configureStore({
   },
 });
 
+// ======= VANILLA REDUX =======//
+
 // import { combineReducers, createStore } from 'redux';
 // import { devToolsEnhancer } from '@redux-devtools/extension';
 // import { contactsReducer } from './contactsSlice';
