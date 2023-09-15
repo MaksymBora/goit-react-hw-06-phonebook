@@ -9,7 +9,6 @@ import { contactsFilter } from "redux/filterSlice";
 
 
 
-
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,10 +18,6 @@ export const App = () => {
   const dispatch = useDispatch();
 
 
-
-  
-
-
   const showPhonebook = () => {
     setIsOpen(true)
   };
@@ -30,8 +25,6 @@ export const App = () => {
   const hidePhonebook = () => {
       setIsOpen(false)
   };
-
-
 
 
   const filteredContacts = value.filter(({ name }) => name.toLowerCase().includes(nameFromFilter.toLocaleLowerCase()));
