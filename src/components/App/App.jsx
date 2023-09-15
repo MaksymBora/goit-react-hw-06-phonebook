@@ -27,12 +27,8 @@ export const App = () => {
       setIsOpen(false)
   };
 
-  const contactsArray = Object.values(contacts);
-
-  const filteredContacts = contactsArray.slice(0, -1).filter(({ name }) => name.toLowerCase().includes(nameFromFilter.toLowerCase()));
+  const filteredContacts = contacts.filter(({ name }) => name.toLowerCase().includes(nameFromFilter.toLowerCase()));
     
-
-
     return (
       <>
         {!isOpen && <OpenPhonebook onClick={showPhonebook} className="phoneBook">Open Phonebook</OpenPhonebook>}
