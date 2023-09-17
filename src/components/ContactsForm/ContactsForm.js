@@ -10,23 +10,13 @@ import {
   Wrapper,
   Button,
 } from './ContactsForm.styled';
+import { PatternFormat } from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewContact, updatePhonebook } from 'redux/contactsSlice';
 
-function validatePhone(phone) {
-  let regex = /^(?:\+380\d{9}|0\d{9})$/;
-  return regex.test(phone);
-}
-
 const ContactsSchema = Yup.object().shape({
   name: Yup.string().required('* Name is required'),
-  number: Yup.string()
-    .min(10)
-    .max(13)
-    .test('phone', '* Invalid phone number', function (value) {
-      return validatePhone(value);
-    })
-    .required('* Phone number is required'),
+  number: Yup.string().required('* Phone number is required'),
 });
 
 const initialValues = { name: '', number: '' };
@@ -57,23 +47,34 @@ export const ContactsForm = () => {
         validationSchema={ContactsSchema}
         onSubmit={handleSubmit}
       >
-        <StyledForm autoComplete="off">
-          <StyledLable>
-            Name
-            <StyledField name="name" placeholder="Jane" />
-            <StyledError component="div" name="name" />
-          </StyledLable>
+        {({ setFieldValue }) => (
+          <StyledForm autoComplete="off">
+            <StyledLable>
+              Name
+              <StyledField name="name" placeholder="Jane" />
+              <StyledError component="div" name="name" />
+            </StyledLable>
 
-          <StyledLable>
-            Number
-            <StyledField name="number" placeholder="+380730990101" />
-            <StyledError component="div" name="number" />
-          </StyledLable>
+            <StyledLable>
+              Number
+              <StyledField
+                as={PatternFormat}
+                format="+38 (0##) ### ## ##"
+                allowEmptyFormatting
+                mask="_"
+                onValueChange={values => {
+                  setFieldValue('number', values.formattedValue);
+                }}
+                name="number"
+              />
+              <StyledError component="div" name="number" />
+            </StyledLable>
 
-          <Button type="submit">
-            <FiUserPlus size={26} />
-          </Button>
-        </StyledForm>
+            <Button type="submit">
+              <FiUserPlus size={26} />
+            </Button>
+          </StyledForm>
+        )}
       </Formik>
     </Wrapper>
   );
