@@ -1,13 +1,11 @@
 
-import { ContactsForm } from '../ContactsForm/ContactsForm';
-import { Filter } from '../Filter/Filter';
-import { ContactList } from '../ContactsList/ContactsList';
-import { AppWrapper} from './app.styled';
 import { useDispatch, useSelector } from "react-redux";
 import { removeContact, updatePhonebook } from "redux/contactsSlice";
+import { ContactsForm } from '../ContactsForm/ContactsForm';
+import { ContactList } from '../ContactsList/ContactsList';
+import { AppWrapper} from './app.styled';
 import { contactsFilter } from "redux/filterSlice";
-import { CreateContact } from 'components/CreateContact/CreateContact';
-import { Header, MainTitle } from 'components/Header/Header';
+import { Header } from 'components/Header/Header';
 
 
 
@@ -25,9 +23,10 @@ export const App = () => {
         <AppWrapper>
           <Header filter={ nameFromFilter } getContact={ (e) => dispatch(contactsFilter(e.currentTarget.value)) } />
           {/* <ContactsForm /> */ }
-          <ContactList filteredContacts={ filteredContacts } removeContact={ (contactId) => dispatch(removeContact(contactId)) } />
+          <main>
+            <ContactList filteredContacts={ filteredContacts } removeContact={ (contactId) => dispatch(removeContact(contactId)) } />
+          </main>
         </AppWrapper>
-        
-        </>
+      </>
     )
 }
