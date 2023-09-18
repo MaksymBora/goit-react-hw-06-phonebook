@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Table = styled.table`
   width: 100%;
@@ -38,6 +39,11 @@ export const TotalContacts = styled.div`
     padding-right: 10px;
     font-weight: 500;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: rgb(105, 105, 105);
 `;
 
 export const TableRawContent = styled.tr`

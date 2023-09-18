@@ -10,6 +10,7 @@ import {
   DeleteBtn,
   Name,
   TotalContacts,
+  StyledLink,
 } from './ContactsList.styled';
 import Avatar from '@mui/material/Avatar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,7 +25,7 @@ function getRandomHexColor() {
   return color;
 }
 
-export const ContactList = () => {
+export const ContactList = ({ stateItem }) => {
   const contactsAmount = useSelector(state => state.contacts.items.length);
 
   const contacts = useSelector(updatePhonebook);
@@ -59,14 +60,21 @@ export const ContactList = () => {
 
             return (
               <TableRawContent key={contact.id}>
-                <TableDataName>
-                  <Avatar
-                    sx={{ bgcolor: getRandomHexColor(), width: 40, height: 40 }}
-                  >
-                    {firstLetter}
-                  </Avatar>
-                  <Name>{ContactNameCapital}</Name>
-                </TableDataName>
+                <StyledLink role="link" to={`${contact.id}`} state={stateItem}>
+                  <TableDataName>
+                    <Avatar
+                      sx={{
+                        bgcolor: getRandomHexColor(),
+                        width: 40,
+                        height: 40,
+                      }}
+                    >
+                      {firstLetter}
+                    </Avatar>
+                    <Name>{ContactNameCapital}</Name>
+                  </TableDataName>
+                </StyledLink>
+
                 <TableDataNumber>{contact.number}</TableDataNumber>
 
                 <DeleteBtn onClick={() => dispatch(removeContact(contact.id))}>
