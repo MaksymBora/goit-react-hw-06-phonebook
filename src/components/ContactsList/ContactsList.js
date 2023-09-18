@@ -12,9 +12,17 @@ import {
   TotalContacts,
 } from './ContactsList.styled';
 import Avatar from '@mui/material/Avatar';
-import { deepPurple } from '@mui/material/colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeContact, updatePhonebook } from 'redux/contactsSlice';
+
+function getRandomHexColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 export const ContactList = () => {
   const contactsAmount = useSelector(state => state.contacts.items.length);
@@ -53,7 +61,7 @@ export const ContactList = () => {
               <TableRawContent key={contact.id}>
                 <TableDataName>
                   <Avatar
-                    sx={{ bgcolor: deepPurple[500], width: 40, height: 40 }}
+                    sx={{ bgcolor: getRandomHexColor(), width: 40, height: 40 }}
                   >
                     {firstLetter}
                   </Avatar>

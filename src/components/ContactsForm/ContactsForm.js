@@ -67,6 +67,7 @@ export const ContactsForm = () => {
               multiline
               variant="standard"
               style={{ width: '300px' }}
+              className="fieldName"
             />
           </InputWrapper>
           <ErrorMessage name="name" component="span" style={{ color: 'red' }} />
