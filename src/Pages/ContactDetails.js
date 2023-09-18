@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   BackBtn,
   AvatarWrapper,
@@ -16,17 +17,28 @@ import {
 import { TbArrowBackUp } from 'react-icons/tb';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FiPhone } from 'react-icons/fi';
-import { useSelector } from 'react-redux';
-import { updatePhonebook } from 'redux/contactsSlice';
+import { removeContact, updatePhonebook } from 'redux/contactsSlice';
 
 const ContactDetails = () => {
   const location = useLocation();
   const { contactId } = useParams();
   const contacts = useSelector(updatePhonebook);
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const currentContact = contacts.find(contact => contact.id === contactId);
 
   const backLinkLocation = useRef(location.state?.from ?? '/addContact');
+
+  const handleDelete = () => {
+    const isConfirmed = window.confirm('Delete contact?');
+
+    if (isConfirmed) {
+      dispatch(removeContact(contactId));
+      navigate('/');
+    }
+  };
 
   return (
     <div>
@@ -48,7 +60,9 @@ const ContactDetails = () => {
             <EditButton>Edit</EditButton>
           </EditBtnWrapper>
           <RemoveBtnWrapper>
-            <RemoveButton>Delete</RemoveButton>
+            <RemoveButton typeof="button" onClick={handleDelete}>
+              Delete
+            </RemoveButton>
           </RemoveBtnWrapper>
         </BtnWrapper>
       </TopContent>
