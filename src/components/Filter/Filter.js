@@ -3,8 +3,13 @@ import { Paper, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import PropTypes from 'prop-types';
 import { SearchStyled, PaperStyledSearch } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { contactsFilter } from 'redux/filterSlice';
 
-export const Filter = ({ filter, getContact }) => {
+export const Filter = () => {
+  const nameFromFilter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+
   return (
     <PaperStyledSearch
       as={Paper}
@@ -28,8 +33,8 @@ export const Filter = ({ filter, getContact }) => {
         placeholder="Search..."
         inputProps={{ 'aria-label': 'filter' }}
         name="filter"
-        value={filter}
-        onChange={getContact}
+        value={nameFromFilter}
+        onChange={e => dispatch(contactsFilter(e.currentTarget.value))}
       />
     </PaperStyledSearch>
   );
