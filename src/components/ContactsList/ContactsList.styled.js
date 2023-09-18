@@ -24,6 +24,7 @@ export const TableHor = styled.th`
   padding: 12px 16px;
   text-align: left;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: 500;
 `;
 
 export const TotalContacts = styled.div`
@@ -34,12 +35,12 @@ export const TotalContacts = styled.div`
   p {
     padding-left: 10px;
     padding-right: 10px;
+    font-weight: 500;
   }
 `;
 
 export const TableRawContent = styled.tr`
   position: relative;
-  /* height: 58px; */
   cursor: pointer;
 
   &:hover {
@@ -58,11 +59,13 @@ export const TableDataName = styled.td`
 export const Name = styled.span`
   padding-top: 20px;
   padding-bottom: 20px;
+  line-height: 24px;
 `;
 
 export const TableDataNumber = styled.td`
   padding: 1px 16px;
   font-size: 18px;
+  line-height: 24px;
 `;
 
 export const DeleteBtn = styled.button`
