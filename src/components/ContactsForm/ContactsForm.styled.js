@@ -33,12 +33,15 @@ export const Button = styled.button`
   text-align: center;
   color: ${({ theme }) => theme.colors.textPrimary};
   cursor: pointer;
-  transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out,
-    color 250ms ease-in-out;
+  transition: transform 250ms ease-in-out, color 250ms ease-in-out;
 
   &:hover {
-    box-shadow: 0px 0px 10px 0px rgba(232, 77, 151, 0.75);
+    color: #47a76a;
     transform: scale(1.1);
-    color: ${({ theme }) => theme.colors.black};
+  }
+
+  &:active {
+    color: #47a76a;
+    transform: scale(1.1);
   }
 `;

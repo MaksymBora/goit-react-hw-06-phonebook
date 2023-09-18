@@ -14,6 +14,7 @@ import { addNewContact, updatePhonebook } from 'redux/contactsSlice';
 import { TextField } from '@mui/material';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import toast from 'react-hot-toast';
 
 const ContactsSchema = Yup.object().shape({
   name: Yup.string().required('* Name is required'),
@@ -37,7 +38,15 @@ export const ContactsForm = () => {
     }
 
     dispatch(addNewContact({ ...values, id: nanoid() }));
-
+    toast.success(
+      <div>
+        <b>{values.name}</b> added in phonebook
+      </div>,
+      {
+        duration: 4000,
+        icon: '✅',
+      }
+    );
     resetForm();
   };
 
