@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import toast from 'react-hot-toast';
 
 const slice = createSlice({
   name: 'contacts',
@@ -11,6 +12,10 @@ const slice = createSlice({
     },
     removeContact(state, action) {
       state.items = state.items.filter(item => item.id !== action.payload);
+      toast.success(<div>Contact deleted!</div>, {
+        duration: 4000,
+        icon: '✅',
+      });
     },
   },
 });

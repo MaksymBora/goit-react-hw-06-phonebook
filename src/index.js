@@ -7,16 +7,19 @@ import { App } from 'components/App/App';
 import { GlobalStyle } from './components/styleTheme/GlobalStyle';
 import { theme } from './components/styleTheme/theme';
 import { store, persistor } from 'redux/store';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
-      </PersistGate>
-    </Provider>
+    <BrowserRouter basename="/goit-react-hw-06-phonebook">
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <App />
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );

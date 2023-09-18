@@ -1,15 +1,16 @@
 import styled from 'styled-components';
+import { InputBase } from '@mui/material';
 
-export const InputFilter = styled.input`
-  padding: 4px 4px 4px 8px;
-  border-radius: 4px;
-  outline: none;
-  border: none;
-  margin-bottom: 24px;
-  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
-  margin-left: 280px;
+export const PaperStyledSearch = styled(InputBase)`
+  box-shadow: 0 0 0 transparent;
+  transition: background-color 250ms ease-in;
 
-  &:focus {
-    box-shadow: 1px 1px 4px 0px rgba(232, 77, 151, 0.75);
+  &:focus-within {
+    background-color: transparent;
+    box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.52);
   }
+`;
+
+export const SearchStyled = styled(InputBase)`
+  background-color: inherit;
 `;
