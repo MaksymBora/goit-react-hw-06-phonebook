@@ -1,5 +1,5 @@
-// import { useRef } from 'react';
-// import { useLocation, useParams } from 'react-router-dom';
+import { useRef } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import {
   BackBtn,
   AvatarWrapper,
@@ -16,25 +16,30 @@ import {
 import { TbArrowBackUp } from 'react-icons/tb';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FiPhone } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import { updatePhonebook } from 'redux/contactsSlice';
 
 const ContactDetails = () => {
-  //   const location = useLocation();
-  //   const { contactId } = useParams();
+  const location = useLocation();
+  const { contactId } = useParams();
+  const contacts = useSelector(updatePhonebook);
 
-  //   const backLinkLocation = useRef(location.state?.from ?? '/addContact');
+  const currentContact = contacts.find(contact => contact.id === contactId);
+
+  const backLinkLocation = useRef(location.state?.from ?? '/addContact');
 
   return (
     <div>
       <TopContent>
         <AvatarWrapper>
           <Avatar>
-            <BackBtn to="/">
+            <BackBtn to={backLinkLocation.current}>
               <TbArrowBackUp size={'30px'} />
             </BackBtn>
             <AccountCircleIcon sx={{ fontSize: '210px', color: '#7E57C2' }} />
           </Avatar>
           <div>
-            <h2>Name</h2>
+            <h2>{currentContact.name}</h2>
           </div>
         </AvatarWrapper>
 
@@ -54,7 +59,7 @@ const ContactDetails = () => {
           <PhoneNumberWrapper>
             <FiPhone size={21} />
             <a href="http://localhost:3000/goit-react-hw-06-phonebook">
-              098-32-23-2
+              {currentContact.number}
             </a>
           </PhoneNumberWrapper>
         </DetailsWrapper>
