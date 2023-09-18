@@ -35,6 +35,10 @@ export const ContactList = ({ filteredContacts, removeContact }) => {
           {filteredContacts.map(contact => {
             const firstLetter = contact.name.slice(0, 1).toUpperCase();
 
+            const contactName = contact.name.charAt(0).toUpperCase();
+            const contactSliced = contact.name.slice(1);
+            const ContactNameCapital = contactName + contactSliced;
+
             return (
               <TableRawContent key={contact.id}>
                 <TableDataName>
@@ -43,7 +47,7 @@ export const ContactList = ({ filteredContacts, removeContact }) => {
                   >
                     {firstLetter}
                   </Avatar>
-                  <Name>{contact.name}</Name>
+                  <Name>{ContactNameCapital}</Name>
                 </TableDataName>
                 <TableDataNumber>{contact.number}</TableDataNumber>
 

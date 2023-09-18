@@ -22,7 +22,7 @@ export const App = () => {
       <>
         <AppWrapper>
           <Header filter={ nameFromFilter } getContact={ (e) => dispatch(contactsFilter(e.currentTarget.value)) } />
-          {/* <ContactsForm />   */}
+          <ContactsForm />  
           <main>
             <ContactList filteredContacts={ filteredContacts } removeContact={ (contactId) => dispatch(removeContact(contactId)) } />
           </main>
