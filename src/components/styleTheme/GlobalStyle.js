@@ -6,7 +6,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-	background: ${({ theme }) => theme.colors.bodyBg};
+	background: ${({ theme }) => theme.colors.white};
 	margin: 0;
 	color: ${({ theme }) => theme.colors.textPrimary};
   }
