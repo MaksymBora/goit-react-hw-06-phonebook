@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Paper, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import PropTypes from 'prop-types';
 import { SearchStyled, PaperStyledSearch } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { contactsFilter } from 'redux/filterSlice';
@@ -38,9 +37,4 @@ export const Filter = () => {
       />
     </PaperStyledSearch>
   );
-};
-
-Filter.propTypes = {
-  filter: PropTypes.string.isRequired,
-  getContact: PropTypes.func.isRequired,
 };

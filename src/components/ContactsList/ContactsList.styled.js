@@ -4,6 +4,7 @@ export const Table = styled.table`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 40px;
 `;
 
 export const Thead = styled.thead`
