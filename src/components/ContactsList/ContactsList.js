@@ -1,4 +1,3 @@
-import { FiUserX } from 'react-icons/fi';
 import { MdDelete } from 'react-icons/md';
 import {
   Thead,
@@ -14,10 +13,21 @@ import {
 } from './ContactsList.styled';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeContact, updatePhonebook } from 'redux/contactsSlice';
 
-export const ContactList = ({ filteredContacts, removeContact }) => {
+export const ContactList = () => {
   const contactsAmount = useSelector(state => state.contacts.items.length);
+
+  const contacts = useSelector(updatePhonebook);
+
+  const nameFromFilter = useSelector(state => state.filter);
+
+  const filteredContacts = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(nameFromFilter.toLowerCase())
+  );
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -29,7 +39,7 @@ export const ContactList = ({ filteredContacts, removeContact }) => {
           </TableRaw>
         </Thead>
         <TotalContacts>
-          <p>CONTACTS({contactsAmount})</p>
+          <p>CONTACTS ({contactsAmount})</p>
         </TotalContacts>
         <tbody>
           {filteredContacts.map(contact => {
@@ -51,7 +61,7 @@ export const ContactList = ({ filteredContacts, removeContact }) => {
                 </TableDataName>
                 <TableDataNumber>{contact.number}</TableDataNumber>
 
-                <DeleteBtn onClick={() => removeContact(contact.id)}>
+                <DeleteBtn onClick={() => dispatch(removeContact(contact.id))}>
                   <MdDelete size={25} />
                 </DeleteBtn>
               </TableRawContent>
