@@ -14,8 +14,11 @@ import {
 } from './ContactsList.styled';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
+import { useSelector } from 'react-redux';
 
 export const ContactList = ({ filteredContacts, removeContact }) => {
+  const contactsAmount = useSelector(state => state.contacts.items.length);
+
   return (
     <>
       <Table>
@@ -26,26 +29,27 @@ export const ContactList = ({ filteredContacts, removeContact }) => {
           </TableRaw>
         </Thead>
         <TotalContacts>
-          <p>CONTACTS(23)</p>
+          <p>CONTACTS({contactsAmount})</p>
         </TotalContacts>
         <tbody>
           {filteredContacts.map(contact => {
+            const firstLetter = contact.name.slice(0, 1).toUpperCase();
+
             return (
               <TableRawContent key={contact.id}>
                 <TableDataName>
                   <Avatar
                     sx={{ bgcolor: deepPurple[500], width: 40, height: 40 }}
                   >
-                    O
+                    {firstLetter}
                   </Avatar>
                   <Name>{contact.name}</Name>
                 </TableDataName>
                 <TableDataNumber>{contact.number}</TableDataNumber>
-                <div>
-                  <DeleteBtn onClick={() => removeContact(contact.id)}>
-                    <MdDelete size={25} />
-                  </DeleteBtn>
-                </div>
+
+                <DeleteBtn onClick={() => removeContact(contact.id)}>
+                  <MdDelete size={25} />
+                </DeleteBtn>
               </TableRawContent>
             );
           })}
