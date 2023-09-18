@@ -7,7 +7,7 @@ export const PaperStyledSearch = styled(InputBase)`
 
   &:focus-within {
     background-color: transparent;
-    box-shadow: -1px 4px 4px -2px rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.52);
   }
 `;
 

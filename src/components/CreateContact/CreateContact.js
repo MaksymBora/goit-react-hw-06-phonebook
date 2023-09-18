@@ -6,11 +6,12 @@ export const CreateContact = () => {
     <PaperStyled
       elevation={3}
       sx={{
-        borderRadius: '15px',
-        p: '4px',
+        borderRadius: '25px',
+        p: '12px 10px 12px 10px',
         alignItems: 'center',
-        width: '150px',
+        minWidth: '150px',
         display: 'flex',
+        gap: '5px',
       }}
     >
       <AddIcon type="button" sx={{ ml: 'auto', mr: 'auto' }} />

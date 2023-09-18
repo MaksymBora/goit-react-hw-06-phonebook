@@ -16,6 +16,7 @@ export const Filter = ({ filter, getContact }) => {
         width: 300,
         bgcolor: 'rgb(241 243 244)',
         boxShadow: 0,
+        borderRadius: '8px',
         transition: 'background-color 250ms ease-in, box-shadow 250ms ease-in',
       }}
     >
