@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const TopContent = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-top: 30px;
 `;
 
 export const BackBtn = styled(Link)`

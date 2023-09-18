@@ -6,10 +6,8 @@ import {
   AvatarWrapper,
   Avatar,
   TopContent,
-  EditBtnWrapper,
   BtnWrapper,
   RemoveBtnWrapper,
-  EditButton,
   RemoveButton,
   DetailsWrapper,
   PhoneNumberWrapper,
@@ -41,7 +39,7 @@ const ContactDetails = () => {
   };
 
   return (
-    <div>
+    <>
       <TopContent>
         <AvatarWrapper>
           <Avatar>
@@ -56,9 +54,9 @@ const ContactDetails = () => {
         </AvatarWrapper>
 
         <BtnWrapper>
-          <EditBtnWrapper>
+          {/* <EditBtnWrapper>
             <EditButton>Edit</EditButton>
-          </EditBtnWrapper>
+          </EditBtnWrapper> */}
           <RemoveBtnWrapper>
             <RemoveButton typeof="button" onClick={handleDelete}>
               Delete
@@ -72,13 +70,11 @@ const ContactDetails = () => {
           <h2>Contact Details</h2>
           <PhoneNumberWrapper>
             <FiPhone size={21} />
-            <a href="http://localhost:3000/goit-react-hw-06-phonebook">
-              {currentContact.number}
-            </a>
+            <a href={`tel:${currentContact.number}`}>{currentContact.number}</a>
           </PhoneNumberWrapper>
         </DetailsWrapper>
       </div>
-    </div>
+    </>
   );
 };
 
