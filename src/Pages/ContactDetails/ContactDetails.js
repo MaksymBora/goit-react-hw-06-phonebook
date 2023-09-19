@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   BackBtn,
@@ -9,33 +9,39 @@ import {
   BtnWrapper,
   RemoveBtnWrapper,
   RemoveButton,
-  DetailsWrapper,
-  PhoneNumberWrapper,
+  EditBtnWrapper,
+  EditButton,
 } from './ContactDetails.styled';
 import { TbArrowBackUp } from 'react-icons/tb';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { FiPhone } from 'react-icons/fi';
+
 import { removeContact, updatePhonebook } from 'redux/contactsSlice';
 
 const ContactDetails = () => {
   const location = useLocation();
-  const { contactId } = useParams();
+  const { id } = useParams();
   const contacts = useSelector(updatePhonebook);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  const currentContact = contacts.find(contact => contact.id === contactId);
+  const currentContact = contacts.find(contact => contact.id === id);
 
-  const backLinkLocation = useRef(location.state?.from ?? '/addContact');
+  console.log(location, 'location');
+  const backLinkLocation = useRef(location.state?.from ?? '/');
+  console.log(backLinkLocation.current.pathname, 'backlink');
 
   const handleDelete = () => {
     const isConfirmed = window.confirm('Delete contact?');
 
     if (isConfirmed) {
-      dispatch(removeContact(contactId));
+      dispatch(removeContact(id));
       navigate('/');
     }
+  };
+
+  const handleContactEdit = () => {
+    navigate(`edit`, { state: { from: `contact/${id}` } });
   };
 
   return (
@@ -54,9 +60,10 @@ const ContactDetails = () => {
         </AvatarWrapper>
 
         <BtnWrapper>
-          {/* <EditBtnWrapper>
+          <EditBtnWrapper type="button" onClick={() => handleContactEdit()}>
             <EditButton>Edit</EditButton>
-          </EditBtnWrapper> */}
+          </EditBtnWrapper>
+
           <RemoveBtnWrapper>
             <RemoveButton typeof="button" onClick={handleDelete}>
               Delete
@@ -65,14 +72,9 @@ const ContactDetails = () => {
         </BtnWrapper>
       </TopContent>
       <hr style={{ marginTop: '20px', marginBottom: '40px' }} />
+
       <div>
-        <DetailsWrapper>
-          <h2>Contact Details</h2>
-          <PhoneNumberWrapper>
-            <FiPhone size={21} />
-            <a href={`tel:${currentContact.number}`}>{currentContact.number}</a>
-          </PhoneNumberWrapper>
-        </DetailsWrapper>
+        <Outlet />
       </div>
     </>
   );
