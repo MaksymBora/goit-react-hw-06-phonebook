@@ -75,18 +75,14 @@ export const ContactsForm = () => {
           <InputWrapper>
             <PhoneEnabledIcon sx={{ fontSize: 36 }} />
             <Field
-              as={TextField}
+              as={PatternFormat}
+              customInput={TextField}
               name="number"
               variant="standard"
               style={{ width: '300px' }}
-              InputProps={{
-                inputComponent: PatternFormat,
-                inputProps: {
-                  format: '+38 (0##) ### ## ##',
-                  allowEmptyFormatting: true,
-                  mask: '_',
-                },
-              }}
+              format="+38 (0##) ### ## ##"
+              allowEmptyFormatting={true}
+              mask="_"
             />
           </InputWrapper>
           <ErrorMessage

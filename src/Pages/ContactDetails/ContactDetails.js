@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -14,8 +14,8 @@ import {
 } from './ContactDetails.styled';
 import { TbArrowBackUp } from 'react-icons/tb';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
 import { removeContact, updatePhonebook } from 'redux/contactsSlice';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const ContactDetails = () => {
   const location = useLocation();
@@ -73,7 +73,22 @@ const ContactDetails = () => {
       <hr style={{ marginTop: '20px', marginBottom: '40px' }} />
 
       <div>
-        <Outlet />
+        <Suspense
+          fallback={
+            <div
+              style={{
+                display: 'flex',
+                marginTop: '100px',
+              }}
+            >
+              <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                <CircularProgress color="success" />
+              </div>
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );
