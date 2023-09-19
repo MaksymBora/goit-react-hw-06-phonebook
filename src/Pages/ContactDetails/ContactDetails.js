@@ -27,9 +27,7 @@ const ContactDetails = () => {
 
   const currentContact = contacts.find(contact => contact.id === id);
 
-  console.log(location, 'location');
   const backLinkLocation = useRef(location.state?.from ?? '/');
-  console.log(backLinkLocation.current.pathname, 'backlink');
 
   const handleDelete = () => {
     const isConfirmed = window.confirm('Delete contact?');

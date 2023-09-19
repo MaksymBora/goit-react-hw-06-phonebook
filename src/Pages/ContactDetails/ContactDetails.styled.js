@@ -50,14 +50,15 @@ export const RemoveBtnWrapper = styled.div`
   align-items: flex-end;
 `;
 
-export const EditButton = styled.div`
+export const EditButton = styled.button`
   min-width: 100px;
   text-align: center;
   background-color: rgba(26, 115, 232, 1);
   border-radius: 4px;
-  padding: 8px 16px;
+  padding: 12px 16px;
   color: #fff;
   cursor: pointer;
+  border: none;
   transition: box-shadow 250ms ease-in-out;
 
   &:hover {
@@ -69,14 +70,15 @@ export const EditButton = styled.div`
   }
 `;
 
-export const RemoveButton = styled.div`
+export const RemoveButton = styled.button`
   min-width: 120px;
   text-align: center;
   background-color: rgba(212, 66, 53, 1);
   border-radius: 4px;
-  padding: 8px 16px;
+  padding: 12px 16px;
   color: #fff;
   cursor: pointer;
+  border: none;
   transition: box-shadow 250ms ease-in-out;
 
   &:hover {

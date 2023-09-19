@@ -19,6 +19,16 @@ const slice = createSlice({
         icon: '✅',
       });
     },
+    updateContact(state, action) {
+      const updatedContact = action.payload;
+      const currentContact = state.items.findIndex(
+        contact => contact.id === updatedContact.id
+      );
+
+      if (currentContact !== -1) {
+        state.items[currentContact] = updatedContact;
+      }
+    },
   },
 });
 
@@ -34,7 +44,7 @@ export const persistedContactsReducer = persistReducer(
   contactsReducer
 );
 
-export const { addNewContact, removeContact } = slice.actions;
+export const { addNewContact, removeContact, updateContact } = slice.actions;
 
 // Selectors
 
