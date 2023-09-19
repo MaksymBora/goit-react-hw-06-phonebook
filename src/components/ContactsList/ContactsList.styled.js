@@ -28,14 +28,14 @@ export const TableHor = styled.th`
   font-weight: 500;
 `;
 
-export const TotalContacts = styled.div`
-  margin-top: 14px;
-  margin-bottom: 14px;
+export const TotalContacts = styled.thead`
+  padding-top: 14px;
+  padding-bottom: 14px;
   font-size: 14px;
 
-  p {
-    padding-left: 10px;
-    padding-right: 10px;
+  td {
+    padding-top: 14px;
+    padding-bottom: 14px;
     font-weight: 500;
   }
 `;
@@ -74,7 +74,7 @@ export const TableDataNumber = styled.td`
 `;
 
 // ====
-export const ButtonsWrapper = styled.div`
+export const ButtonsWrapper = styled.td`
   display: none;
   position: absolute;
   top: 14px;

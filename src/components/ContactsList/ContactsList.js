@@ -54,7 +54,9 @@ export const ContactList = ({ stateItem }) => {
           </TableRaw>
         </Thead>
         <TotalContacts>
-          <p>CONTACTS ({contactsAmount})</p>
+          <tr>
+            <td>CONTACTS ({contactsAmount})</td>
+          </tr>
         </TotalContacts>
         <tbody>
           {filteredContacts.map(contact => {
@@ -96,7 +98,11 @@ export const ContactList = ({ stateItem }) => {
                   <DeleteBtn
                     onClick={e => {
                       e.stopPropagation();
-                      dispatch(removeContact(contact.id));
+
+                      const isConfirmed = window.confirm('Delete contact?');
+                      if (isConfirmed) {
+                        dispatch(removeContact(contact.id));
+                      }
                     }}
                   >
                     <MdDelete size={25} />
