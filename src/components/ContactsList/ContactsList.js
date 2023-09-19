@@ -1,4 +1,5 @@
 import { MdDelete } from 'react-icons/md';
+import { FiEdit } from 'react-icons/fi';
 import {
   Thead,
   Table,
@@ -10,6 +11,8 @@ import {
   DeleteBtn,
   Name,
   TotalContacts,
+  EditBtn,
+  ButtonsWrapper,
 } from './ContactsList.styled';
 import Avatar from '@mui/material/Avatar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -81,9 +84,24 @@ export const ContactList = ({ stateItem }) => {
 
                 <TableDataNumber>{contact.number}</TableDataNumber>
 
-                <DeleteBtn onClick={() => dispatch(removeContact(contact.id))}>
-                  <MdDelete size={25} />
-                </DeleteBtn>
+                <ButtonsWrapper>
+                  <EditBtn
+                    onClick={e => {
+                      e.stopPropagation();
+                      navigate(`contact/${contact.id}/edit`);
+                    }}
+                  >
+                    <FiEdit size={25} />
+                  </EditBtn>
+                  <DeleteBtn
+                    onClick={e => {
+                      e.stopPropagation();
+                      dispatch(removeContact(contact.id));
+                    }}
+                  >
+                    <MdDelete size={25} />
+                  </DeleteBtn>
+                </ButtonsWrapper>
               </TableRawContent>
             );
           })}

@@ -69,10 +69,27 @@ export const TableDataNumber = styled.td`
   line-height: 24px;
 `;
 
-export const DeleteBtn = styled.button`
+// ====
+export const ButtonsWrapper = styled.div`
   position: absolute;
   top: 14px;
   right: 8px;
+`;
+
+export const EditBtn = styled.button`
+  padding: 4px 6px;
+  background: transparent;
+  margin-right: 10px;
+  border: none;
+  color: #00000051;
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(0, 0, 0, 1);
+  }
+`;
+
+export const DeleteBtn = styled.button`
   padding: 4px 6px;
   background: transparent;
   border: none;

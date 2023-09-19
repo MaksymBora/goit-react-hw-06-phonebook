@@ -39,7 +39,7 @@ const ContactDetails = () => {
   };
 
   const handleContactEdit = () => {
-    navigate(`edit`, { state: { from: `contact/${id}` } });
+    navigate(`edit`, { state: { from: location } });
   };
 
   return (
@@ -50,6 +50,7 @@ const ContactDetails = () => {
             <BackBtn to={backLinkLocation.current}>
               <TbArrowBackUp size={'30px'} />
             </BackBtn>
+
             <AccountCircleIcon sx={{ fontSize: '210px', color: '#7E57C2' }} />
           </Avatar>
           <div>
