@@ -46,6 +46,10 @@ export const TableRawContent = styled.tr`
 
   &:hover {
     background-color: rgba(245, 245, 245, 1);
+
+    .ButtonsWrapper {
+      display: block;
+    }
   }
 `;
 
@@ -71,6 +75,7 @@ export const TableDataNumber = styled.td`
 
 // ====
 export const ButtonsWrapper = styled.div`
+  display: none;
   position: absolute;
   top: 14px;
   right: 8px;

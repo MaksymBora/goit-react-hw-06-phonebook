@@ -84,7 +84,7 @@ export const ContactList = ({ stateItem }) => {
 
                 <TableDataNumber>{contact.number}</TableDataNumber>
 
-                <ButtonsWrapper>
+                <ButtonsWrapper className="ButtonsWrapper">
                   <EditBtn
                     onClick={e => {
                       e.stopPropagation();
